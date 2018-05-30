@@ -15,18 +15,18 @@ class ATM
         begin
             puts "Please Enter Your Account Number:"
             print "> "
-            account_no = gets.chomp.to_i
+            account_no = STDIN.gets.chomp.to_i
             puts "Enter Your Password:"
             print "> "
-            account_pass = gets.chomp
+            account_pass = STDIN.gets.chomp
             while !@config["accounts"].has_key?(account_no) || @config["accounts"][account_no]["password"] != account_pass do
                 puts "\nERROR: ACCOUNT NUMBER AND PASSWORD DON'T MATCH\n\n"
                 puts "Please Enter Your Account Number:"
                 print "> "
-                account_no = gets.chomp.to_i
+                account_no = STDIN.gets.chomp.to_i
                 puts "Enter Your Password:"
                 print "> "
-                account_pass = gets.chomp
+                account_pass = STDIN.gets.chomp
             end
             @currAccount = @config["accounts"][account_no]
             @banknotes = @config["banknotes"]
@@ -45,10 +45,10 @@ class ATM
         begin
             puts @choises
             print "> "
-            choise = gets.chomp.to_i
+            choise = STDIN.gets.chomp.to_i
             while !((1..3).include? choise) do
                 puts "\nERROR: You choose incorrect Option\n\n"
-                choise = gets.chomp.to_i
+                choise = STDIN.gets.chomp.to_i
                 puts @choises
                 print "> "
             end
@@ -78,7 +78,7 @@ class ATM
         puts "Enter Amount You Wish to Withdraw:"
         print "> "
         while true do
-            amount = gets.chomp.to_i
+            amount = STDIN.gets.chomp.to_i
             if amount > account_balance
                 puts "\nERROR: INSUFFICIENT FUNDS!! PLEASE ENTER A DIFFERENT AMOUNT:"
                 print "> "
